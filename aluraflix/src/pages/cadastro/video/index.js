@@ -9,6 +9,7 @@ function CadastroVideo() {
                 <h1>Página de Cadastro de Vídeo</h1>
                 <sub>Text</sub>
                 <Link to="categoria">Cadastrar Categoria</Link>
+                
             </PageDefault>
         </div>
     );
