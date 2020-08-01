@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import  './Menu.css' ;
 // import ButtonLink from '../button/index';
-import Button from './Button'
+import Button from '../button/Button'
 import Logo from '../../asserts/logo.png';
 
 
@@ -16,9 +16,7 @@ function Menu() {
             <Button as={Link} className="ButtonLink" to="/cadastro/video">
                 Novo Vídeo
             </Button>
-           
-        </nav>
-        
+        </nav> 
     );
 }
 
