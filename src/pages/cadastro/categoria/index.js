@@ -2,10 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import PageDefault from '../../../components/PageDefault';
 import FormField from '../../../components/FormField';
+import Button from '../../../components/button/Button'
+import Category from '../../../repositories/categorias/index'
 
 function CadastroCategoria() {
   const valoresIniciais = {
-    nome: '',
+    titulo: '',
     descricao: '',
     cor: '',
   }
@@ -14,7 +16,8 @@ function CadastroCategoria() {
 
 
   function setValue(chave, valor) {
-    // chave: nome, descricao, bla, bli
+    // chave: titulo, descricao, bla, bli
+    console.log(chave+ valor);
     setValues({
       ...values,
       [chave]: valor, // nome: 'valor'
@@ -22,17 +25,15 @@ function CadastroCategoria() {
   }
 
   function handleChange(infosDoEvento) {
-    setValue(
-      infosDoEvento.target.getAttribute('name'),
-      infosDoEvento.target.value
-    );
+    // console.log("mudando");
+    setValue(infosDoEvento.target.getAttribute('name'), infosDoEvento.target.value);
   }
 
   // ============
 
   useEffect(() => {
-    if(window.location.href.includes('localhost')) {
-      const URL = 'http://localhost:8080/categorias'; 
+      // console.log("Buscando");
+      const URL = 'http://localhost:8080' ? "http://localhost:8080/categorias" : "https://alurasanflix.herokuapp.com/categorias" ;
       fetch(URL)
        .then(async (respostaDoServer) =>{
         if(respostaDoServer.ok) {
@@ -42,20 +43,27 @@ function CadastroCategoria() {
         }
         throw new Error('Não foi possível pegar os dados');
        })
-    }    
+       
   }, []);
 
   return (
     <PageDefault>
-      <h1>Cadastro de Categoria: {values.nome}</h1>
+      <h1>Cadastro de Categoria: {values.titulo}</h1>
 
-      <form onSubmit={function handleSubmit(infosDoEvento) {
-          infosDoEvento.preventDefault();
-
+      <form onSubmit={function handleSubmit(e) {
+          e.preventDefault();
+          // console.log(categorias);
+          
+          Category.createCategory(values);
+          
           setCategorias([
             ...categorias,
             values
           ]);
+          
+          // Category.getAll();
+
+          
 
           setValues(valoresIniciais)
       }}>
@@ -63,8 +71,8 @@ function CadastroCategoria() {
         <FormField
           label="Nome da Categoria"
           type="text"
-          name="nome"
-          value={values.nome}
+          name="titulo"
+          value={values.titulo}
           onChange={handleChange}
         />
 
@@ -106,9 +114,9 @@ function CadastroCategoria() {
           </label>
         </div> */}
 
-        <button>
+        <Button>
           Cadastrar
-        </button>
+        </Button>
       </form>
       
 
