@@ -2,9 +2,7 @@
 {
   "name": "aluraflix",
   "version": "0.1.0",
-  "engines": {
-    "node": "12.16.1"
-  },
+  
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
@@ -18,6 +16,7 @@
     "react-slick": "^0.27.1",
     "styled-components": "^5.1.1"
   },
+  
   "scripts": {
     "start": "node ./server.js",
     "dev": "concurrently \"react-scripts start\" \"node ./server.js\"",
