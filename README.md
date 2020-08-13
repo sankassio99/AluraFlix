@@ -1,4 +1,11 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# AluraFlix #
+This application was created in a event with Alura <br>
+App for you save your favorite Youtube videos 100% responsive created with React Js
+
+You can access this app in the link: [Access Project](https://alura-flix-chi.vercel.app/)
+
+![ScreenShot](https://github.com/sankassio99/AluraFlix/blob/master/Colagem%20AluraFLix.png)
 
 ## Available Scripts
 
